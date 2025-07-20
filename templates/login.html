@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head%} <title>Login</title>{% endblock %}
+
+{% block body%} 
+<div class="content"> 
+        <h1>Welcome!</h1>
+        <h2> Login to continue.</h2>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="error"> {{message}} </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    <form method="POST" action="/login">
+        {{ form.hidden_tag() }}  <!-- This includes the CSRF token -->
+        <div>
+            {{ form.username.label }}
+            {{ form.username() }}
+        </div>
+        <div>
+            {{ form.password.label }}
+            {{ form.password() }}
+        </div>
+        {{ form.submit() }}
+    </form>
+</div>
+{% endblock %}
