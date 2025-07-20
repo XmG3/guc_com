@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session, flash
+from flask import Flask, render_template, redirect, request, flash
 from flask_scss import Scss
 from flask_sqlalchemy import SQLAlchemy
 import secrets
@@ -54,8 +54,8 @@ def load_user(user_id):
 
 #csrf protection setup
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    username = StringField('Username:', validators=[DataRequired()])
+    password = PasswordField('Password:', validators=[DataRequired()])
     submit = SubmitField('Login')
 
 #initialize a whitelist of users in a database
@@ -94,7 +94,6 @@ def login():
         user = User.query.filter_by(username=username, is_active=True).first()
         if user and user.check_password(password):
             login_user(user)
-            flash('Login was successful.')
             return redirect('/nav')
         else:
             flash('Invalid username or password.', 'error')

@@ -1,0 +1,33 @@
+@import "../base.scss";
+.nav-page{
+
+    background-color: $primary-white;
+    color: $primary-brown;
+
+nav{
+    color: $primary-brown;
+    font-size: 1.2em;
+    font-family: $primary-font;
+    text-align: center;
+    padding: 5px;
+    line-height: 1.5;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 60px, auto;
+    justify-content: center;
+}
+
+.area{
+    color: $primary-red;
+    background: $secondary-red;
+    width: 80vw;
+    height: 200px;
+    font-size: 2em;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+}
+}

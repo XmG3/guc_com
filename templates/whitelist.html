@@ -1,47 +1,53 @@
 {% extends 'base.html' %}
-{% block head %}<title>User Management</title>{% endblock %}
+
+{% block body_class %}whitelist-page{% endblock %}
+{% block head %}<title>User Managment</title>{% endblock %}
 {% block body %}
-<div class="content">
-    <h1>User Management</h1>
+<div class="content user-management">
+    <h1>Whitelist</h1>
     
-    <div style="margin-bottom: 20px;">
-        <a href="/admin/add_user" style="background: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Add New User</a>
-        <a href="/nav" style="background: #6c757d; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-left: 10px;">Back to Navigation Page</a>
+    <div class="header">
+        <div class="actions">
+            <a href="/admin/add_user" class="btn">Add User</a>
+            <a href="/nav" class="btn btn--secondary">Back to Navigation</a>
+        </div>
     </div>
     
-    <table border="1" style="width: 100%; border-collapse: collapse;">
+    <table class="data-table">
         <tr>
-            <th style="padding: 10px; background: #f8f9fa;">ID</th>
-            <th style="padding: 10px; background: #f8f9fa;">Username</th>
-            <th style="padding: 10px; background: #f8f9fa;">Created At</th>
-            <th style="padding: 10px; background: #f8f9fa;">Status</th>
-            <th style="padding: 10px; background: #f8f9fa;">Actions</th>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Status</th>
+            <th>Actions</th>
         </tr>
         {% for user in users %}
         <tr>
-            <td style="padding: 10px;">{{ user.id }}</td>
-            <td style="padding: 10px;"><strong>{{ user.username }}</strong></td>
-            <td style="padding: 10px;">{{ user.created_at.strftime('%Y-%m-%d %H:%M') if user.created_at else 'N/A' }}</td>
-            <td style="padding: 10px;">
+            <td>{{ user.id }}</td>
+            <td><strong>{{ user.username }}</strong></td>
+            <td>
                 {% if user.is_active %}
-                    <span style="color: green;">Active</span>
+                    {% if user.is_admin %}
+                        <span class="status status--active">Active Admin</span>
+                    {% else %}
+                    <span class="status status--active">Active User</span>
+                    {% endif %}
                 {% else %}
-                    <span style="color: red;">Inactive</span>
+                    <span class="status status--inactive">Inactive</span>
                 {% endif %}
             </td>
-            <td style="padding: 10px;">
+            <td>
                 {% if user.username != 'admin' %}
                     <a href="/admin/delete_user/{{ user.id }}" 
-                       onclick="return confirm('Are you sure you want to delete {{ user.username }}?')"
-                       style="color: red; text-decoration: none;">Delete</a>
+                       class="btn btn--danger"
+                       onclick="return confirm('Are you sure you want to delete {{ user.username }}?')">Delete</a>
                 {% else %}
-                    <span style="color: #6c757d;">Protected</span>
+                    <span class="protected-user">Protected</span>
                 {% endif %}
             </td>
         </tr>
         {% endfor %}
     </table>
     
-    <p style="margin-top: 20px;"><strong>Total Users:</strong> {{ users|length }}</p>
+    <p class="user-stats">Total Users: {{ users|length }}</p>
 </div>
 {% endblock %}

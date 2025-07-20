@@ -1,0 +1,24 @@
+.user-management {
+  .header {
+    margin-bottom: $spacing-lg;
+    
+    .actions {
+      .btn + .btn {
+        margin-left: $spacing-sm;
+      }
+    }
+  }
+  
+  .user-stats {
+    margin-top: $spacing-lg;
+    font-weight: bold;
+  }
+  
+  .protected-user {
+    color: $secondary-black;
+  }
+}
+
+body{
+    background-color: $primary-black;
+}

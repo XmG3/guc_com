@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% block body_class %}login-page{% endblock %}
 {% block head%} <title>Login</title>{% endblock %}
 
 {% block body%} 
@@ -19,7 +20,7 @@
         {{ form.hidden_tag() }}  <!-- This includes the CSRF token -->
         <div>
             {{ form.username.label }}
-            {{ form.username() }}
+            {{ form.username(autocomplete="off") }}
         </div>
         <div>
             {{ form.password.label }}
@@ -27,5 +28,12 @@
         </div>
         {{ form.submit() }}
     </form>
+    <script>
+        setTimeout(function() {
+            document.querySelectorAll('.error').forEach(function(el) {
+                el.style.display = 'none';
+            });
+        },3000); //3000 is 3 seconds
+    </script>
 </div>
 {% endblock %}

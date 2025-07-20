@@ -1,0 +1,38 @@
+// Buttons
+.btn {
+  @include button-style($primary-red);
+  
+  &--secondary {
+    @include button-style($secondary-black);
+  }
+  
+  &--danger {
+    @include button-style($primary-red);
+  }
+}
+
+// Tables
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  th, td {
+    padding: $spacing-sm;
+    border: 1px solid $primary-white;
+  }
+  
+  th {
+    background: $secondary-black;
+    font-weight: bold;
+  }
+  
+  .status {
+    &--active {
+      color: $primary-white;
+    }
+    
+    &--inactive {
+      color: $secondary-red;
+    }
+  }
+}

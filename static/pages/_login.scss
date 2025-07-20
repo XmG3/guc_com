@@ -1,0 +1,31 @@
+
+.content {
+    max-width: 800px;
+    margin: 150px auto;
+    padding: 20px;
+    background-color: $primary-green; 
+    border-radius: 8px;
+    box-shadow: 0 0 10px $secondary-black;
+    text-align: center;
+
+    input {
+        padding: 10px;
+        margin: 5px;
+        border: solid 1px;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+
+    #submit {
+        background-color: $primary-red;
+        color: $primary-white;
+        border: $primary-red;
+        size: 1.2em;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        cursor: pointer;
+        &:hover {
+            background-color: $secondary-red;
+        }
+    }
+}

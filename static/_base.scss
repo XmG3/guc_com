@@ -1,0 +1,35 @@
+//brand colors
+$primary-red: #821E28;
+$primary-white: #FCFFEB;
+$primary-black: #0c0f0A;
+$primary-green: #365739;
+$primary-blue: #001966;
+$primary-brown: #3b2403;
+
+$secondary-red: #A52733;
+$secondary-white: #F3F2F6;
+$secondary-black: #181D1A;
+$secondary-green: #47714A;
+$secondary-blue: #00248F;
+$secondary-brown: #613B05;
+
+//main font
+$primary-font: 'Courier New', Courier, monospace;
+
+//spacing
+$spacing-sm: 10px;
+$spacing-md: 15px;
+$spacing-lg: 20px;
+
+@mixin button-style($bg-color, $text-color: $primary-white) {
+  background: $bg-color;
+  color: $text-color;
+  padding: $spacing-sm $spacing-md;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+}
